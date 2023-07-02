@@ -38,13 +38,7 @@ def get_vectorstore(text_chunks):
     # create embeddings before loading into a vector store/knowledge base
     embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["api_keys"]["OPEN_API_KEY"])
 
-    """
-    we'll use FAISS as our vector store. FAISS is a 
-    library for efficient similarity search and clustering of dense vectors.
-    In practice, it allows us to quickly search for multimedia 
-    documents that are similar to each other. More below: 
-    https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/
-    """
+    # we'll use FAISS as our vector store.
     vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vector_store
 
