@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from langchain.chat_models import ChatOpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceInstructEmbeddings
+from langchain.embeddings import OpenAIEmbeddings
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
@@ -32,14 +32,15 @@ def get_text_chunks(text):
 def get_vectorstore(text_chunks):
 
     # create embeddings before loading into a vector store
-    embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+    embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["api_keys"]["OPEN_API_KEY"])
 
+    # we'll use FAISS as our vector store
     vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vector_store
 
 def get_conversation_chain(vectorstore):
     
-    llm = ChatOpenAI(openai_api_key=st.secrets["api keys"]["OPEN_API_KEY"],
+    llm = ChatOpenAI(openai_api_key=st.secrets["api_keys"]["OPEN_API_KEY"],
                      temperature=0)
 
     memory = ConversationBufferMemory(
@@ -55,14 +56,13 @@ def handle_user_input(user_question):
     response = st.session_state.conversation({'question': user_question})
     st.session_state.chat_history = response['chat_history']
 
-    user = st.chat_message(name="User", avatar="💃")
-    assistant = st.chat_message(name="J.A.A.F.A.R.", avatar="🤖")
-
     for i, message in enumerate(st.session_state.chat_history):
         if i%2 == 0:
-            assistant.write(message.content)
-        else:
+            user = st.chat_message(name="User", avatar="💃")
             user.write(message.content)
+        else:
+            assistant = st.chat_message(name="J.A.A.F.A.R.", avatar="🤖")
+            assistant.write(message.content)
 
 def main():
     st.set_page_config(page_title="Chat with multiple PDFs",

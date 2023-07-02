@@ -1,7 +1,6 @@
 langchain==0.0.220
 PyPDF2==3.0.1
-streamlit==1.23.0
+streamlit==1.24.0
 openai==0.27.8
 faiss-cpu==1.7.4
-InstructorEmbedding==1.0.1
-sentence-transformers==2.2.2
+tiktoken==0.4.0
