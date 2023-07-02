@@ -2,7 +2,7 @@
 
 ### **TLDR**
 
-Simple PDF chatbot using LangChain, OpenAI and FAISS vector store.
+Simple PDF chatbot using LangChain, OpenAI, FAISS and Streamlit.
 
 ### **Sample User Interface**
 
@@ -10,4 +10,5 @@ Simple PDF chatbot using LangChain, OpenAI and FAISS vector store.
 
 ### **Resources**
 
-- Adapted from Alejandro AO's PDF Chatbot [tutorial](https://www.youtube.com/watch?v=dXxQ0LR-3Hg). The *Instructor Embeddings* version, while free, was too heavy to run on Streamlit's community cloud so we opted for OpenAI's **paid** embeddings instead.
+- Adapted from Alejandro AO's PDF Chatbot [tutorial](https://www.youtube.com/watch?v=dXxQ0LR-3Hg). His GitHub repo can be found [here](https://github.com/alejandro-ao/ask-multiple-pdfs/tree/main). The *Instructor Embeddings* version, while free, was too heavy to run on Streamlit's community cloud so we opted for OpenAI's **paid** embeddings instead.
+- https://docs.streamlit.io/library/api-reference/chat/st.chat_message
