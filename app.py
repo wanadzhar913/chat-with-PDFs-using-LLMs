@@ -9,7 +9,11 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
 def get_pdf_text(pdf_docs):
-
+    """
+    initialise a variable which
+    takes an empty string and subsequently apend
+    the pages of the pdf to this variable.
+    """
     text = ""
 
     for pdf in pdf_docs:
@@ -31,17 +35,23 @@ def get_text_chunks(text):
 
 def get_vectorstore(text_chunks):
 
-    # create embeddings before loading into a vector store
+    # create embeddings before loading into a vector store/knowledge base
     embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["api_keys"]["OPEN_API_KEY"])
 
-    # we'll use FAISS as our vector store
+    """
+    we'll use FAISS as our vector store. FAISS is a 
+    library for efficient similarity search and clustering of dense vectors.
+    In practice, it allows us to quickly search for multimedia 
+    documents that are similar to each other. More below: 
+    https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/
+    """
     vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vector_store
 
 def get_conversation_chain(vectorstore):
     
     llm = ChatOpenAI(openai_api_key=st.secrets["api_keys"]["OPEN_API_KEY"],
-                     temperature=0)
+                     temperature=0.25)
 
     memory = ConversationBufferMemory(
         memory_key='chat_history', return_messages=True)

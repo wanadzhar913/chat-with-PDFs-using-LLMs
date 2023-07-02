@@ -10,4 +10,4 @@ Simple PDF chatbot using LangChain, OpenAI and FAISS vector store.
 
 ### **Resources**
 
-- Credit goes to Alejandro AO's [tutorial](https://www.youtube.com/watch?v=dXxQ0LR-3Hg) on using LangChain, OpenAI's API and FAISS vector store. 
+- Adapted from Alejandro AO's PDF Chatbot [tutorial](https://www.youtube.com/watch?v=dXxQ0LR-3Hg). The *Instructor Embeddings* version, while free, was too heavy to run on Streamlit's community cloud so we opted for OpenAI's **paid** embeddings instead.
