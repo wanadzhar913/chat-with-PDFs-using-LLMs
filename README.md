@@ -2,7 +2,7 @@
 
 ### **TLDR**
 
-Simple PDF chatbot using LangChain, OpenAI and FAISS vector store.
+Simple PDF chatbot using LangChain, OpenAI, FAISS and Streamlit.
 
 ### **Sample User Interface**
 
