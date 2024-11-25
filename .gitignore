@@ -1,5 +1,6 @@
 # virtual environment
 pdf_chat_venv/
+venv/
 
 # passwords and API keys
 .streamlit/secrets.toml
