@@ -133,7 +133,7 @@ def main():
     )
 
     if os.environ["OPENAI_API_KEY"] == None:
-        os.environ["OPENAI_API_KEY"] = st.secrets["api_keys"]["OPEN_API_KEY"]
+        os.environ["OPENAI_API_KEY"] = st.secrets["api_keys"]["OPENAI_API_KEY"]
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
