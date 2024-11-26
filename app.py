@@ -1,6 +1,6 @@
 import os
 import logging
-from typing import List
+from typing import List, Union
 
 import streamlit as st
 from pypdf import PdfReader
@@ -18,7 +18,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def get_pdf_text(pdf_docs: str|List) -> List[str]:
+def get_pdf_text(pdf_docs: Union[str, List]) -> List[str]:
     """
     initialise a variable which takes an empty string and subsequently
     apend the pages of the pdf to this variable.
