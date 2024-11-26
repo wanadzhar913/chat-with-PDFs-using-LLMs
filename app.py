@@ -18,7 +18,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def get_pdf_text(pdf_docs: Union[str, List]) -> List[str]:
+def get_pdf_text(pdf_docs: Union[str, list]) -> List[str]:
     """
     initialise a variable which takes an empty string and subsequently
     apend the pages of the pdf to this variable.
@@ -33,7 +33,7 @@ def get_pdf_text(pdf_docs: Union[str, List]) -> List[str]:
     """
     text = ""
 
-    if isinstance(pdf_docs, List):
+    if isinstance(pdf_docs, list):
         for pdf in pdf_docs:
             pdf_reader = PdfReader(pdf)
             for page in pdf_reader.pages:
