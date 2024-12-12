@@ -96,6 +96,7 @@ def get_conversation_chain(vectorstore):
 
     memory = ConversationBufferMemory(
         llm=llm,
+        input_key="question",
         output_key="answer",
         memory_key="chat_history",
         return_messages=True
@@ -115,7 +116,7 @@ def handle_user_input(user_question):
     and prints the output conversation.
     """
     config = {"configurable": {"session_id": "any"}}
-    response = st.session_state.conversation.invoke({'question': user_question}, config)
+    response = st.session_state.conversation.invoke({'question': user_question, 'chat_history': st.session_state.chat_history}, config)
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):
